@@ -1,0 +1,22 @@
+--- 
+abstract: An observer/notification for Moose
+author: 
+  - Robert Boone <rlb@cpan.org>
+build_requires: 
+  Bread::Board: 0
+  Test::More: 0
+distribution_type: module
+generated_by: Module::Install version 0.68
+license: Perl
+meta-spec: 
+  url: http://module-build.sourceforge.net/META-spec-v1.3.html
+  version: 1.3
+name: Notification-Center
+no_index: 
+  directory: 
+    - inc
+    - t
+requires: 
+  Moose: 0
+  Set::Object: 0
+version: 0.0.3
