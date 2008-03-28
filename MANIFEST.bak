@@ -10,7 +10,6 @@ inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
-lib/.DS_Store
 lib/Notification/Center.pm
 Makefile
 Makefile.PL
@@ -18,8 +17,6 @@ MANIFEST
 MANIFEST.bak
 MANIFEST.SKIP
 META.yml
-MooseX-Notification-0.0.2.tar.gz
-pm_to_blib
 README
 t/00.load.t
 t/01.basic.t

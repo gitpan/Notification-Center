@@ -1,7 +1,7 @@
 # This Makefile is for the Notification::Center extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.42 (Revision: 41145) from the contents of
+# 6.44 (Revision: 54639) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -17,8 +17,9 @@
 #     NAME => q[Notification::Center]
 #     NO_META => q[1]
 #     PL_FILES => {  }
-#     PREREQ_PM => { Test::More=>q[0], Set::Object=>q[0], Bread::Board=>q[0], Moose=>q[0] }
-#     VERSION => q[0.0.3]
+#     PREREQ_PM => { Test::More=>q[0], Set::Object=>q[0], ExtUtils::MakeMaker=>q[6.44], Bread::Board=>q[0], Moose=>q[0] }
+#     VERSION => q[0.0.4]
+#     clean => { FILES=>q[META.yml] }
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     test => { TESTS=>q[t/00.load.t t/01.basic.t t/02.ioc.t] }
 
@@ -27,9 +28,8 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /opt/perl/lib/5.10.0/darwin-thread-multi-2level/Config.pm)
-
-# They may have been overridden via Makefile.PL or on the command line
+# These definitions are from config.sh (via /opt/perl/lib/5.10.0/darwin-2level/Config.pm).
+# They may have been overridden via Makefile.PL or on the command line.
 AR = ar
 CC = cc
 CCCDLFLAGS =  
@@ -39,16 +39,16 @@ DLSRC = dl_dlopen.xs
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
 LD = env MACOSX_DEPLOYMENT_TARGET=10.3 cc
-LDDLFLAGS =  -bundle -undefined dynamic_lookup -L/usr/local/lib -L/opt/local/lib
-LDFLAGS =  -L/usr/local/lib -L/opt/local/lib -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk
+LDDLFLAGS =  -bundle -undefined dynamic_lookup -L/usr/local/lib
+LDFLAGS =  -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk -L/usr/local/lib
 LIBC = /usr/lib/libc.dylib
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = darwin
-OSVERS = 9.1.0
+OSVERS = 9.2.2
 RANLIB = ranlib
 SITELIBEXP = /opt/perl/lib/site_perl/5.10.0
-SITEARCHEXP = /opt/perl/lib/site_perl/5.10.0/darwin-thread-multi-2level
+SITEARCHEXP = /opt/perl/lib/site_perl/5.10.0/darwin-2level
 SO = dylib
 VENDORARCHEXP = 
 VENDORLIBEXP = 
@@ -60,11 +60,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Notification::Center
 NAME_SYM = Notification_Center
-VERSION = 0.0.3
+VERSION = 0.0.4
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_0_3
+VERSION_SYM = 0_0_4
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.0.3
+XS_VERSION = 0.0.4
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -87,9 +87,9 @@ INSTALLSITELIB = /opt/perl/lib/site_perl/5.10.0
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
 INSTALLVENDORLIB = 
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = /opt/perl/lib/5.10.0/darwin-thread-multi-2level
+INSTALLARCHLIB = /opt/perl/lib/5.10.0/darwin-2level
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = /opt/perl/lib/site_perl/5.10.0/darwin-thread-multi-2level
+INSTALLSITEARCH = /opt/perl/lib/site_perl/5.10.0/darwin-2level
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
 INSTALLVENDORARCH = 
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
@@ -118,13 +118,13 @@ DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
 INSTALLVENDORMAN3DIR = 
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
 PERL_LIB =
-PERL_ARCHLIB = /opt/perl/lib/5.10.0/darwin-thread-multi-2level
+PERL_ARCHLIB = /opt/perl/lib/5.10.0/darwin-2level
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /opt/perl/lib/5.10.0/darwin-thread-multi-2level/CORE
+PERL_INC = /opt/perl/lib/5.10.0/darwin-2level/CORE
 PERL = /opt/perl/bin/perl "-Iinc"
 FULLPERL = /opt/perl/bin/perl "-Iinc"
 ABSPERL = $(PERL)
@@ -139,8 +139,8 @@ PERM_RW = 644
 PERM_RWX = 755
 
 MAKEMAKER   = /opt/perl/lib/5.10.0/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.42
-MM_REVISION = 41145
+MM_VERSION  = 6.44
+MM_REVISION = 54639
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -195,7 +195,7 @@ PM_TO_BLIB = lib/.DS_Store \
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.42
+MM_Unix_VERSION = 6.44
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -243,7 +243,7 @@ makemakerdflt : all
 
 
 # --- MakeMaker dist section:
-TAR = tar
+TAR = COPY_EXTENDED_ATTRIBUTES_DISABLE=1 COPYFILE_DISABLE=1 tar
 TARFLAGS = cvf
 ZIP = zip
 ZIPFLAGS = -r
@@ -258,7 +258,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Notification-Center
-DISTVNAME = Notification-Center-0.0.3
+DISTVNAME = Notification-Center-0.0.4
 
 
 # --- MakeMaker macro section:
@@ -456,7 +456,7 @@ clean :: clean_subdirs
 	  perl.exe so_locations \
 	  $(BASEEXT).exp 
 	- $(RM_RF) \
-	  blib 
+	  META.yml blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
 
 
@@ -767,17 +767,18 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,3,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,4,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>An observer/notification for Moose</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Robert Boone &lt;rlb@cpan.org&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Bread-Board" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="ExtUtils-MakeMaker" VERSION="6,44,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Moose" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Set-Object" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Test-More" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <OS NAME="$(OSNAME)" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-thread-multi-2level-5.1" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-2level-5.1" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd
@@ -799,7 +800,7 @@ pm_to_blib : $(TO_INST_PM)
 
 
 # End.
-# Postamble by Module::Install 0.68
+# Postamble by Module::Install 0.71
 # --- Module::Install::Admin::Makefile section:
 
 realclean purge ::
