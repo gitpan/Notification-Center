@@ -1,7 +1,7 @@
 # This Makefile is for the Notification::Center extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.44 (Revision: 54639) from the contents of
+# 6.50 (Revision: 65000) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -10,18 +10,18 @@
 #
 #   MakeMaker Parameters:
 
-#     ABSTRACT => q[An observer/notification for Moose]
+#     ABSTRACT => q[An observer/notification for perl]
 #     AUTHOR => q[Robert Boone <rlb@cpan.org>]
 #     DIR => []
 #     DISTNAME => q[Notification-Center]
 #     NAME => q[Notification::Center]
 #     NO_META => q[1]
 #     PL_FILES => {  }
-#     PREREQ_PM => { Test::More=>q[0], Set::Object=>q[0], ExtUtils::MakeMaker=>q[6.44], Bread::Board=>q[0], Moose=>q[0] }
-#     VERSION => q[0.0.4]
-#     clean => { FILES=>q[META.yml] }
+#     PREREQ_PM => { Test::More=>q[0], Set::Object=>q[0], ExtUtils::MakeMaker=>q[6.42], Bread::Board=>q[0], Moose=>q[0] }
+#     VERSION => q[0.0.5]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
-#     test => { TESTS=>q[t/00.load.t t/01.basic.t t/02.ioc.t] }
+#     realclean => { FILES=>q[MYMETA.yml] }
+#     test => { TESTS=>q[t/00.load.t t/01.basic.t t/02.ioc.t t/03-multi.t] }
 
 # --- MakeMaker post_initialize section:
 
@@ -40,12 +40,12 @@ EXE_EXT =
 FULL_AR = /usr/bin/ar
 LD = env MACOSX_DEPLOYMENT_TARGET=10.3 cc
 LDDLFLAGS =  -bundle -undefined dynamic_lookup -L/usr/local/lib
-LDFLAGS =  -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk -L/usr/local/lib
+LDFLAGS =  -L/usr/local/lib
 LIBC = /usr/lib/libc.dylib
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = darwin
-OSVERS = 9.2.2
+OSVERS = 9.1.0
 RANLIB = ranlib
 SITELIBEXP = /opt/perl/lib/site_perl/5.10.0
 SITEARCHEXP = /opt/perl/lib/site_perl/5.10.0/darwin-2level
@@ -60,11 +60,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Notification::Center
 NAME_SYM = Notification_Center
-VERSION = 0.0.4
+VERSION = 0.0.5
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_0_4
+VERSION_SYM = 0_0_5
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.0.4
+XS_VERSION = 0.0.5
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -139,8 +139,8 @@ PERM_RW = 644
 PERM_RWX = 755
 
 MAKEMAKER   = /opt/perl/lib/5.10.0/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.44
-MM_REVISION = 54639
+MM_VERSION  = 6.50
+MM_REVISION = 65000
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -195,7 +195,7 @@ PM_TO_BLIB = lib/.DS_Store \
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.44
+MM_Unix_VERSION = 6.50
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -258,7 +258,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Notification-Center
-DISTVNAME = Notification-Center-0.0.4
+DISTVNAME = Notification-Center-0.0.5
 
 
 # --- MakeMaker macro section:
@@ -456,7 +456,7 @@ clean :: clean_subdirs
 	  perl.exe so_locations \
 	  $(BASEEXT).exp 
 	- $(RM_RF) \
-	  META.yml blib 
+	  blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
 
 
@@ -471,7 +471,7 @@ realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
 	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
 	- $(RM_RF) \
-	  $(DISTVNAME) 
+	  MYMETA.yml $(DISTVNAME) 
 
 
 # --- MakeMaker metafile section:
@@ -740,7 +740,7 @@ $(MAKE_APERL_FILE) : $(FIRST_MAKEFILE) pm_to_blib
 TEST_VERBOSE=0
 TEST_TYPE=test_$(LINKTYPE)
 TEST_FILE = test.pl
-TEST_FILES = t/00.load.t t/01.basic.t t/02.ioc.t
+TEST_FILES = t/00.load.t t/01.basic.t t/02.ioc.t t/03-multi.t
 TESTDB_SW = -d
 
 testdb :: testdb_$(LINKTYPE)
@@ -753,7 +753,6 @@ subdirs-test ::
 
 test_dynamic :: pure_all
 	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-e" "test_harness($(TEST_VERBOSE), 'inc', '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-Iinc" "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
 
 testdb_dynamic :: pure_all
 	PERL_DL_NONLAZY=1 $(FULLPERLRUN) $(TESTDB_SW) "-Iinc" "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
@@ -767,13 +766,13 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,4,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,5,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>An observer/notification for Moose</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>An observer/notification for perl</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Robert Boone &lt;rlb@cpan.org&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Bread-Board" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="ExtUtils-MakeMaker" VERSION="6,44,0,0" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="ExtUtils-MakeMaker" VERSION="6,42,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Moose" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Set-Object" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Test-More" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
@@ -800,13 +799,14 @@ pm_to_blib : $(TO_INST_PM)
 
 
 # End.
-# Postamble by Module::Install 0.71
+# Postamble by Module::Install 0.82
 # --- Module::Install::Admin::Makefile section:
 
 realclean purge ::
 	$(RM_F) $(DISTVNAME).tar$(SUFFIX)
-	$(RM_RF) inc MANIFEST.bak _build
-	$(PERL) -I. "-MModule::Install::Admin" -e "remove_meta()"
+	$(RM_F) MANIFEST.bak _build
+	$(PERL) "-Ilib" "-MModule::Install::Admin" -e "remove_meta()"
+	$(RM_RF) inc
 
 reset :: purge
 
